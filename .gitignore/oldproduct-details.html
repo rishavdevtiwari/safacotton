@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Products - SafaCotton</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo1.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="products.html">Products</a></li>
+                      <!-- <li><a href="login.html">Account</a></li> -->
+                    </ul>
+                  </nav>
+                    <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+            </div>
+<div class="product-details-container">
+    <div class="single-product">
+        <div class="row">
+            <div class="col-2">
+                <img src="" width="100%" id="product-img">
+                <div class="small-img-row">
+                    <div class="small-img-col">
+                        <img src="" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="" width="100%" class="small-img">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="" width="100%" class="small-img">
+                    </div>
+                </div>
+            </div>
+            <div class="col-2">
+                <p>Home / Medical Cotton Roll</p>
+                <h1 id="product-name"></h1>
+                <h4 id="product-price"></h4>
+                <div class="quantity">
+                    <button class="quantity-btn" id="decrement-btn">-</button>
+                    <input type="number" id="quantity" value="1" min="1">
+                    <button class="quantity-btn" id="increment-btn">+</button>
+                </div>
+                
+                <p id="total-price"></p>
+                <button class="btn" id="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Retrieve product details from localStorage
+    const productId = localStorage.getItem('productId');
+    const productPrice = localStorage.getItem('productPrice');
+    const products = {
+        product1: { name: 'Cotton Rolls 15/25 Gm (Gross)', price: 'Rs.155.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product2: { name: 'Cotton Rolls 25/50 Gm (Gross)', price: 'Rs.200.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product3: { name: 'Cotton Rolls 60/100 Gm (Gross)', price: 'Rs.340.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product4: { name: 'Cotton Rolls 150/200 Gm (Gross)', price: 'Rs.120.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product5: { name: 'Cotton Rolls 300/400 Gm (Gross)', price: 'Rs.155.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product6: { name: 'Cotton Rolls 400/500 Gm (Gross)', price: 'Rs.210.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product7: { name: 'ZigZag 50 Gm', price: 'Rs.40.00', img: 'images/sample.png', smallImg1: 'images /sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' },
+        product8: { name: 'ZigZag 100 Gm', price: 'Rs.75.00', img: 'images/sample.png', smallImg1: 'images/sample.png', smallImg2: 'images/banner0.png', smallImg3: 'images/sample.png', smallImg4: 'images/safacotton.png' }
+    };
+
+// Display product details
+const product = products[productId];
+document.getElementById('product-name').innerText = product.name;
+document.getElementById('product-price').innerText = `Rs.${productPrice}`;
+document.getElementById('product-img').src = product.img;
+
+// Update total price based on quantity
+const quantityInput = document.getElementById('quantity');
+const totalPriceElement = document.getElementById('total-price');
+
+const updateTotalPrice = () => {
+    const quantity = parseInt(quantityInput.value);
+    const totalPrice = productPrice * quantity;
+    totalPriceElement.innerText = `Total Price: Rs.${totalPrice.toFixed(2)}`;
+};
+
+// Initial total price display
+updateTotalPrice();
+
+// Update total price on quantity change
+quantityInput.addEventListener('input', updateTotalPrice);
+
+// Add to cart functionality
+document.getElementById('add-to-cart').addEventListener('click', () => {
+    const quantity = quantityInput.value;
+    const totalPrice = productPrice * quantity;
+    alert(`Added ${quantity} of ${product.name} to cart. Total Price: Rs.${totalPrice.toFixed(2)}`);
+    // Here you can implement the logic to store the cart details
+});
+</script>
+
+
+<div class="related-products-section">
+        <h2 class="title">Related Products</h2>
+    <div class="row">
+        <div class="col-4" onclick="showProductDetails('product1')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 15/25 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-1">Rs.155.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product2')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 25/50 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-2">Rs.200.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product3')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 60/100 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-3">Rs.340.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product4')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 150/200 Gm (Gross) </h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-4">Rs.120.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product5')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 300/400 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-5">Rs.155.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product6')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 400/500 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-6">Rs.210.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product7')">
+            <img src="images/sample.png">
+            <h4>ZigZag 50 Gm</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-7">Rs.40.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product8')">
+            <img src="images/sample.png">
+            <h4>ZigZag 100 Gm</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-8">Rs.80.00</p>
+        </div>
+    </div>
+</div>
+<script>
+function showProductDetails(productId) {
+    // Store product details in localStorage
+    const productPrice = document.getElementById(`product-price-${productId.slice(-1)}`).innerText.replace('Rs.', '');
+    localStorage.setItem('productId', productId);
+    localStorage.setItem('productPrice', productPrice);
+    window.location.href = 'product-details.html';
+}
+</script>
+<!--footer-->
+<div id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>For Further Inquiries</h3>
+                <p>Contact Us at +9779843673247 | +9779846511551</p>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/logo1.png" width="125px">
+                <p>Your trusted source for medical supplies in Nepal.</p>
+            </div>
+            <br>
+            <p class="copyright">&copy; 2024 safacotton. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!---js for menu toggling-->
+<script>
+    var MenuItems=document.getElementById("MenuItems");
+    MenuItems.style.maxHeight="0px";
+    function menutoggle(){
+        if(MenuItems.style.maxHeight=="0px"){
+            MenuItems.style.maxHeight="200px";
+        }
+    else{
+        MenuItems.style.maxHeight="0px";
+    }
+}
+</script>
+
+<!-- js for product gallery
+<script>
+    // Get the main product image and small images
+    var ProductImg = document.getElementById("product-img");
+    var SmallImg = document.getElementsByClassName("small-img");
+
+    // Debugging: Check if elements are selected correctly
+    console.log("Main Product Image:", ProductImg);
+    console.log("Small Images:", SmallImg);
+
+    // Loop through all small images and add onclick event
+    for (let i = 0; i < SmallImg.length; i++) {
+        SmallImg[i].onclick = function() {
+            // Debugging: Confirm onclick event is firing
+            console.log("Small Image Clicked:", SmallImg[i].src);
+
+            // Update the main product image src
+            ProductImg.src = SmallImg[i].src;
+
+            // Debugging: Confirm the main image src is updated
+            console.log("Main Image Updated to:", ProductImg.src);
+        }
+    }
+</script> -->
+
+<script>
+    
+// Get the Add to Cart button
+const addToCartButton = document.getElementById('add-to-cart');
+
+// Get the product details
+//product id ra product price mathi lisakeko cha local storage bata
+const productName = document.getElementById('product-name').innerText;
+const productImage = document.getElementById('product-img').src;
+
+// Function to add product to cart
+function addToCart() {
+  // Get the cart items from localStorage
+  let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+  // Get the quantity from the input field
+// Get the quantity input element
+const quantityInput = document.getElementById('quantity');
+
+// Get the increment and decrement buttons
+const incrementButton = document.getElementById('increment-btn');
+const decrementButton = document.getElementById('decrement-btn');
+
+// Event listeners for increment and decrement buttons
+incrementButton.addEventListener('click', () => {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+    updateTotalPrice();  // Update total price when quantity changes
+});
+
+decrementButton.addEventListener('click', () => {
+    if (parseInt(quantityInput.value) > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+        updateTotalPrice();  // Update total price when quantity changes
+    }
+});
+
+  //const quantity = parseInt(quantityInput.value);
+
+  // Create a new cart item
+  const cartItem = {
+    productId: productId,
+    productName: productName,
+    productPrice: productPrice,
+    productImage: productImage,
+    quantity: quantity
+  };
+
+  // Check if the product is already in the cart
+  const existingCartItem = cartItems.find(item => item.productId === productId);
+
+  if (existingCartItem) {
+    // If the product is already in the cart, increment the quantity
+    existingCartItem.quantity += quantity;
+  } else {
+    // If the product is not in the cart, add it to the cart
+    cartItems.push(cartItem);
+  }
+
+  // Update the cart items in localStorage
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+  // Display a success message
+  alert('Product added to cart successfully!');
+}
+
+// Add an event listener to the Add to Cart button
+addToCartButton.addEventListener('click', addToCart);
+  </script>
+
+</body>
+</html>

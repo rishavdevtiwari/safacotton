@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - SafaCotton</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+    <style>
+        body {
+            font-family: 'Playwrite AU SA', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        /* Checkout Form */
+        .checkout {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .checkoutpage {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        h1, h2, h3 {
+            color: #333;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        input[type="text"], input[type="email"], input[type="tel"], input[type="hidden"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        button.place-order-button {
+            width: 100%;
+            background-color: #28a745;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+        button.place-order-button:hover {
+            background-color: #218838;
+        }
+        
+        /* Order Summary */
+        .order-summary-box {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .order-summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .order-summary-total p {
+            font-size: 18px;
+        }
+        
+        .order-summary-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .order-summary-item img {
+            margin-right: 10px;
+        }
+        
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .payment-method {
+            margin: 10px;
+            border: 3px solid #ccc;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .payment-method.selected {
+            border: 3px solid #0f0;
+            background-color: #f0f0f0;
+        }
+        
+        .payment-method img {
+            max-width: 100px;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .dropdown-content img {
+            width: 300px;
+            height: auto;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+        
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+            }
+        
+            .payment-methods {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .order-summary-box {
+                margin-top: 20px;
+            }
+        
+            .footer .container {
+                flex-direction: column;
+            }
+        
+            .footer-col-1, .footer-col-2 {
+                text-align: center;
+            }
+        
+            .footer-col-1 p {
+                font-size: 14px;
+            }
+        
+            .footer-col-2 img {
+                width: 100px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .order-summary-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .order-summary-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .order-summary-item img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>      
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo1.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="products.html">Products</a></li>
+                    </ul>
+                  </nav>
+    
+                    <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div> 
+        </div>   
+<div class="checkout">
+    <form id="checkoutForm" action="https://formsubmit.co/safacotton@gmail.com" method="POST">
+        <div class="checkoutpage">
+            <div class="order-summary-box">
+                <div class="order-summary-header">
+                    <h3>Order Summary</h3>
+                    <a href="#" class="view-details" onclick="toggleOrderDetails()">View Details</a>
+                </div>
+                <div class="order-summary-content">
+                    <div class="order-summary-total" name="totalPrice">
+                        <p>Total:</p>
+                        <p id="order-total">Rs.0.00</p>
+                    </div>
+                    <div class="order-summary-details" id="order-summary-details" name="order-details">
+                        <!-- Order details will be populated here from localStorage -->
+                    </div>
+                </div>
+            </div>
+            <h1>Checkout</h1>
+            <!-- General Information -->
+            <h2>General Information</h2>
+            <h3>Full Name</h3>
+            <input type="text" name="name" placeholder="e.g. Hari Thapa" required>
+            <h3>Email</h3>
+            <input type="email" name="email" placeholder="e.g. ram@gmail.com" required>
+            <h3>Phone Number</h3>
+            <input type="tel" name="phone" placeholder="e.g. 9841123456" required>
+
+            <!-- Delivery Address -->
+            <h2>Delivery Address</h2>
+            <h3>Pharmaceutical/Hospital Name</h3>
+            <input type="text" name="hospital/pharma-Name" placeholder="e.g. ABC Medical Pasal" required>
+            <h3>Location Details</h3>
+            <input type="text" name="location" placeholder="e.g. gongabu chowk" required>
+
+            <!-- Payment Methods -->
+            <input type="hidden" id="payment-method" name="payment-method">
+            <div class="payment-methods">
+              <div class="dropdown">
+                  <div class="payment-method" id="esewa" onclick="selectPaymentMethod(this)">
+                      <img src="images/esewalogo.png" width="100" height="100" alt="esewa">
+                  </div>
+                  <div class="dropdown-content">
+                      <img src="images/dropdown.jpg" width="300" height="200">
+                  </div>
+              </div>
+              <div class="dropdown">
+                  <div class="payment-method" id="nepalpay" onclick="selectPaymentMethod(this)">
+                      <img src="images/nepalpay.png" width="100" height="100" alt="nepalpay">
+                  </div>
+                  <div class="dropdown-content">
+                      <img src="images/dropdown-nepalpay.png" width="300" height="350">
+                  </div>
+              </div>
+              <div class="payment-method" id="cod" onclick="selectPaymentMethod(this)">
+                  <img src="images/cod.png" width="100" height="100" alt="cod">
+              </div>
+          </div>
+          
+            <input type="text" placeholder="eg:Acc.No: 123456789, Payment done!" name="payment-details" required>
+            
+            <!-- Hidden fields for payment and order details -->
+            <input type="hidden" id="order-details-input" name="order-details">
+            <input type="hidden" id="totalPrice" name="totalPrice">
+
+            <!-- Place Order Button -->
+            <button type="submit" class="place-order-button">Place Order</button>
+        </form>
+    </div>
+</div>
+
+<!--footer-->
+<div class="footer">
+  <div class="container">
+      <div class="row">
+          <div class="footer-col-1">
+              <h3>For Further Inquiries</h3>
+              <p>Contact Us at +9779843673247 | +9779846511551</p>
+          </div>
+          <div class="footer-col-2">
+              <img src="images/logo1.png" width="125px">
+              <p>Your trusted source for medical supplies in Nepal.</p>
+          </div>
+          <br>
+          <p class="copyright">&copy; 2024 safacotton. All rights reserved.</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = MenuItems.scrollHeight + "px";
+        } else {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+
+    // Function to select payment method
+    function selectPaymentMethod(element) {
+        const methods = document.querySelectorAll('.payment-method');
+        methods.forEach(method => method.classList.remove('selected'));
+        element.classList.add('selected');
+        const paymentMethod = element.id;
+
+        // Update the hidden input field with the selected payment method
+        document.getElementById('payment-method').value = paymentMethod;
+    }
+
+    // Toggle order details view
+    function toggleOrderDetails() {
+        const details = document.getElementById('order-summary-details');
+        details.style.display = (details.style.display === 'none' || details.style.display === '') ? 'block' : 'none';
+    }
+
+    // Load order details from localStorage and populate the order summary
+    function loadOrderDetails() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const orderSummaryDetails = document.getElementById('order-summary-details');
+        const orderTotalElement = document.getElementById('order-total');
+
+        // Populate order summary with cart items
+        let orderDetailsHTML = '';
+        cartItems.forEach(cartItem => {
+            orderDetailsHTML += `
+                <div class="order-summary-item">
+                    <img src="${cartItem.productImage}" width="50px" height="50px">
+                    <div>
+                        <p>${cartItem.productName}</p>
+                        <p>Quantity: ${cartItem.quantity}</p>
+                        <p>Price: Rs.${(cartItem.productPrice * cartItem.quantity).toFixed(2)}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        orderSummaryDetails.innerHTML = orderDetailsHTML;
+
+        // Calculate total price
+        const totalPrice = cartItems.reduce((total, item) => total + (item.productPrice * item.quantity), 0);
+        orderTotalElement.textContent = `Rs.${totalPrice.toFixed(2)}`;
+    }
+
+    document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+        // Fetch selected payment method
+        const selectedPaymentMethod = document.querySelector('.payment-method.selected');
+        if (!selectedPaymentMethod) {
+            alert("Please select a payment method");
+            e.preventDefault();
+            return;
+        }
+
+        // Fetch cart items from localStorage
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Calculate total price
+        const totalPrice = cartItems.reduce((total, item) => total + (parseFloat(item.productPrice) * item.quantity), 0);
+
+        // Create order details string in the desired format
+        let orderDetailsString = '';
+        cartItems.forEach((cartItem, index) => {
+            orderDetailsString += `
+${index + 1}. Product: ${cartItem.productName}, 
+   Quantity: ${cartItem.quantity}, 
+   Total Price: Rs.${(cartItem.productPrice * cartItem.quantity).toFixed(2)}\n`;
+        });
+        orderDetailsString += `\nGrand Total: Rs.${totalPrice.toFixed(2)}`;
+
+        // Populate hidden input fields for FormSubmit
+        document.getElementById('totalPrice').value = `Rs.${totalPrice.toFixed(2)}`;
+        document.getElementById('order-details-input').value = orderDetailsString;
+
+        // Ensure payment method is also passed
+        document.getElementById('payment-method').value = selectedPaymentMethod.id;
+
+        // Debugging: Check order details string in the console
+        console.log(orderDetailsString);
+
+        // Delay clearing localStorage to ensure data is sent before clearing
+        setTimeout(() => {
+            localStorage.removeItem('cartItems');
+            console.log("Local storage cleared after form submission.");
+        }, 1000); // Adjust the delay as necessary
+    });
+
+    // Load order details when the page is loaded
+    window.onload = function () {
+        loadOrderDetails();
+    };
+</script>
+
+</body>
+</html>

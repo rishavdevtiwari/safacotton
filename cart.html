@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Products - SafaCotton</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+        family=Popping:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"> -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo1.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="products.html">Products</a></li>
+                      <!-- <li><a href="login.html">Account</a></li> -->
+                    </ul>
+                  </nav>
+                    <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                    <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+            </div>
+<div class="cart-page">
+<div class="cart-content">
+<!-- Cart table -->
+<table id="cart-table">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+    </tr>
+    <!-- Cart items will be appended here -->
+</table>
+
+<!-- Total price -->
+<div class="total-price">
+    <table>
+        <tr>
+            <td>Total:</td>
+            <td id="total-price-amount">Rs.0.00</td>
+        </tr>
+    </table>
+</div>
+
+<!-- Checkout button -->
+<button class="checkout-button">Checkout</button>
+</div>
+</div>
+
+<!-- Script to update the cart table -->
+<script>
+    // Update the cart table when the page loads
+    updateCartTable();
+
+    // Function to update the cart table
+    function updateCartTable() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const cartTable = document.getElementById('cart-table');
+        const totalPriceElement = document.getElementById('total-price-amount');
+
+        // Clear the cart table
+        cartTable.innerHTML = `
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+            </tr>
+        `;
+
+        // Append cart items to the cart table
+        let totalPrice = 0;
+        cartItems.forEach(cartItem => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>
+                    <div class="cart-info">
+                        <img src="${cartItem.productImage}" width="80px" height="80px">
+                        <div>
+                            <p>${cartItem.productName}</p>
+                            <small>Price: ${cartItem.productPrice}</small>
+                            <br>
+                            <a href="">Remove</a>
+                        </div>
+                    </div>
+                </td>
+                <td><input type="number" value="${cartItem.quantity}"></td>
+                <td>Rs.${cartItem.quantity * parseFloat(cartItem.productPrice)}.00</td>
+            `;
+            cartTable.appendChild(row);
+            totalPrice += cartItem.quantity * parseFloat(cartItem.productPrice);
+        });
+
+        // Update the total price
+        totalPriceElement.innerText = `Rs.${totalPrice.toFixed(2)}`;
+
+        // If no products are in the cart, display a message
+        if (cartItems.length === 0) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td colspan="3">Your cart is empty.</td>
+            `;
+            cartTable.appendChild(row);
+        }
+    }
+</script>
+<script>
+    jQuery(document).ready(function($) {
+        function updateCartCount() {
+            $.ajax({
+                url: wc_cart_params.ajax_url,
+                data: {
+                    action: 'get_cart_count'
+                },
+                type: 'POST',
+                success: function(data) {
+                    $('.xoo-wsc-sc-count').text(data);
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.log('Error:', xhr, textStatus, errorThrown);
+                }
+            });
+        }
+    
+        // Event listener for quantity changes
+        $(document).on('change', '.cart-item-quantity', function() {
+            const newQuantity = $(this).val();
+            const productId = $(this).data('product-id');
+    
+            // Update the cart via AJAX
+            $.ajax({
+                url: wc_cart_params.ajax_url,
+                data: {
+                    action: 'update_cart_item',
+                    product_id: productId,
+                    quantity: newQuantity
+                },
+                type: 'POST',
+                success: function() {
+                    updateCartCount(); // Update the cart count after changing quantity
+                },
+                error: function(xhr, textStatus, errorThrown) {
+                    console.log('Error:', xhr, textStatus, errorThrown);
+                }
+            });
+        });
+    
+        // Call the updateCartCount function initially
+        updateCartCount();
+    
+        // Call the updateCartCount function periodically
+        setInterval(updateCartCount, 5000); // Update every 5 seconds (adjust as needed)
+    });
+</script>
+
+    <!--footer-->
+<div id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>For Further Inquiries</h3>
+                <p>Contact Us at +9779843673247 | +9779846511551</p>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/logo1.png" width="125px">
+                <p>Your trusted source for medical supplies in Nepal.</p>
+            </div>
+            <br>
+            <p class="copyright">&copy; 2024 safacotton. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!---js for menu toggling-->
+<script>
+    var MenuItems=document.getElementById("MenuItems");
+    MenuItems.style.maxHeight="0px";
+    function menutoggle(){
+        if(MenuItems.style.maxHeight=="0px"){
+            MenuItems.style.maxHeight="200px";
+        }
+    else{
+        MenuItems.style.maxHeight="0px";
+    }
+}
+</script>
+<script>
+    document.querySelector('.checkout-button').addEventListener('click', function() {
+        window.location.href = 'checkout.html';
+      });
+</script>
+<script>
+    // Get the cart items from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  
+    // Get the cart table
+    const cartTable = document.getElementById('cart-table');
+  
+    // Function to display cart items
+    function displayCartItems() {
+      // Clear the cart table
+      cartTable.innerHTML = `
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      `;
+  
+      // Append cart items to the cart table
+      cartItems.forEach(cartItem => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>
+            <img src="${cartItem.productImage}" width="80px" height="80px">
+            <div>
+              <p>${cartItem.productName}</p>
+              <small>Price: ${cartItem.productPrice}</small>
+            </div>
+          </td>
+          <td>${cartItem.quantity}</td>
+          <td>Rs.${cartItem.quantity * parseFloat(cartItem.productPrice)}.00</td>
+        `;
+        cartTable.appendChild(row);
+      });
+      // Calculate the total price
+  const totalPrice = cartItems.reduce((total, cartItem) => {
+    return total + cartItem.quantity * parseFloat(cartItem.productPrice);
+  }, 0);
+
+  // Display the total price
+  const totalPriceElement = document.getElementById('total-price-amount');
+  totalPriceElement.innerText = `Rs.${totalPrice.toFixed(2)}`;
+}
+  
+    // Display cart items
+    displayCartItems();
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - SafaCotton</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        /* Additional styles for the thank-you page */
+        .thank-you-container {
+            text-align: center;
+            padding: 50px;
+            margin-top: 100px;
+        }
+        .thank-you-container h1 {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .thank-you-container p {
+            font-size: 24px;
+            color: #555;
+            margin-bottom: 40px;
+        }
+        .thank-you-container .btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background 0.3s ease;
+        }
+        .thank-you-container .btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images/logo1.png" width="125px">
+                </div>
+                <nav>
+                    <ul id="MenuItems">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank You Section -->
+    <div class="thank-you-container">
+        <h1>Thank You!</h1>
+        <p>Your order has been placed successfully. We appreciate your business!</p>
+        <p>Would you like to continue exploring our products?</p>
+        <a href="products.html" class="btn">Continue Exploring</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>For Further Inquiries</h3>
+                    <p>Contact Us at +977-1234567890</p>
+                </div>
+                <div class="footer-col-2">
+                    <img src="images/logo1.png" width="125px">
+                    <p>Your trusted source for medical supplies in Nepal.</p>
+                </div>
+                <br>
+                <p class="copyright">&copy; 2024 SafaCotton. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px";
+            } else {
+                MenuItems.style.maxHeight = "0px";
+            }
+        }
+    </script>
+</body>
+</html>

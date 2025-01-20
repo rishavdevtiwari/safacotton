@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>SafaCotton | SafaCotton Website</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+                <div class="navbar">
+                    <div class="logo">
+                        <img src="images/logo1.png" width="125px">
+                    </div>
+                    <nav>
+                        <ul id="MenuItems">
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="products.html">Products</a></li>
+                        </ul>
+                      </nav>
+        
+                        <a href="cart.html"><img src="images/cart.png" width="30px" height="30px"></a>
+                        <img src="images/menu.png" class="menu-icon" onclick="menutoggle()">
+                </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1>Crafting Comfort,<br>One Thread at a Time</h1>
+                    <p>Our cotton products ensure exceptional comfort and support<br>in medical settings, prioritizing the patient's well-being.</p>
+                    <a href="products.html" class="btn">Explore Now &#10140;</a>
+                </div>
+            <div class="col-2">
+                    <img src="images/safacotton.png">
+            </div>
+            </div>
+            </div>
+        </div>
+<!--------------------------------- feature categories--------------------->
+<div class="categories">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <img src="images/safacottonbanner.png">
+            </div>
+            <div class="col-3">
+                <img src="images/banner.png">
+            </div>
+            <div class="col-3">
+                <img src="images/sample.png">
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------------------------feature products---------------->
+<div class="small-container">
+    <h2 class="title">Featured Products</h2>
+    <div class="row">
+        <div class="col-4" onclick="showProductDetails('product1')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 15/25 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-1">Rs.155.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product2')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 25/50 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-2">Rs.200.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product3')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 60/100 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-3">Rs.340.00</p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-4" onclick="showProductDetails('product4')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 150/200 Gm (Gross) </h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-4">Rs.120.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product5')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 300/400 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-5">Rs.155.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product6')">
+            <img src="images/sample.png">
+            <h4>Cotton Rolls 400/500 Gm (Gross)</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-6">Rs.210.00</p>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-4" onclick="showProductDetails('product7')">
+            <img src="images/sample.png">
+            <h4>ZigZag 50 Gm</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-7">Rs.40.00</p>
+        </div>
+        <div class="col-4" onclick="showProductDetails('product8')">
+            <img src="images/sample.png">
+            <h4>ZigZag 100 Gm</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+            <p id="product-price-8">Rs.80.00</p>
+        </div>
+    </div>
+</div>
+<!-----testimonial------>
+<div class="testimonial">
+    <div class="small-container">
+        <div class="row">
+            <div class="col-5">
+                <i class="fa fa-quote-left"></i>
+                <p>Hello! My name is Prabesh Paudel,<br>
+                    blablablablawowoawoaskjdfasbkfbe<br>
+                    fbhiefbdksjvsdnvksdsdsdvsvsdvvws</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <img src="images/img1.png">
+                        <h3>Prabesh Paudel</h3>
+                </div>
+            <div class="col-5">
+                <i class="fa fa-quote-left"></i>
+                <p>Hello! My name is Prabesh ko mom,<br>
+                    blablablablawowoawoaskjdfasbkfbe<br>
+                    fbhiefbdksjvsdnvksdsdsdvsvsdvvws</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                        </div>
+                        <img src="images/user-2.png">
+                        <h3>Goma Paudel</h3>
+                </div>
+            <div class="col-5">
+                <i class="fa fa-quote-left"></i>
+                <p>Hello! My name is Prabesh ko sister,<br>
+                    blablablablawowoawoaskjdfasbkfbe<br>
+                    fbhiefbdksjvsdnvksdsdsdvsvsdvvws</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-o"></i>
+                        </div>
+                        <img src="images/user-3.png">
+                        <h3>Prameela Paudel</h3>
+                </div>
+        </div>
+    </div>
+</div>
+<br>
+<!--footer-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>For Further Inquiries</h3>
+                <p>Contact Us at +9779843673247 | +9779846511551</p>
+            </div>
+            <div class="footer-col-2">
+                <img src="images/logo1.png" width="125px">
+                <p>Your trusted source for medical supplies in Nepal.</p>
+            </div>
+            <br>
+            <p class="copyright">&copy; 2024 safacotton. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!---js for menu toggling-->
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = MenuItems.scrollHeight + "px";
+        } else {
+            MenuItems.style.maxHeight = "0px";
+        }
+    }
+</script>
+<script>
+    // Function to show product details
+    function showProductDetails(productId) {
+        // Store product details in localStorage
+        const productPrice = document.getElementById(`product-price-${productId.slice(-1)}`).innerText.replace('Rs.', '');
+        localStorage.setItem('productId', productId);
+        localStorage.setItem('productPrice', productPrice);
+        window.location.href = 'product-details.html';
+    }
+</script>
+</body>
+</html>
+<!--6 cottons , 2 zigzag-->
+<!----copyright:safacotton-->
