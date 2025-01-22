@@ -705,7 +705,11 @@ h4 {
     margin: 0; /* Reset margin */
     flex: 0 0 50px; /* Set a fixed width and prevent flex growth */
 }
-
+@media (min-width: 768px) {
+    .quantity {
+        justify-content: flex-start;
+    }
+}
 /* 2. Responsive adjustments for mobile */
 @media only screen and (max-width: 768px) {
     .quantity {
