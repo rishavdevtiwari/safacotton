@@ -384,7 +384,7 @@ h4 {
     }
 
     .product-details-container {
-        padding-top: 150px;
+        padding-top: 5%;
     }
 
     .navbar {
@@ -401,14 +401,14 @@ h4 {
     .product-details img {
         width: 300px;
         height: auto;
-        padding-top: 70px;
+        padding-top: 10%;
     }
 
     .product-details-container {
         display: flex;
         flex-direction: column;
         min-height: 100vh;
-        padding-top: 150px;
+        padding-top: 5%;
     }
 }
 
@@ -679,7 +679,7 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px; /* Add space between the buttons and input */
+    gap: 20px; /* Add space between the buttons and input */
 }
 
 .quantity-btn {
@@ -702,6 +702,8 @@ h4 {
     font-size: 18px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin: 0; /* Reset margin */
+    flex: 0 0 50px; /* Set a fixed width and prevent flex growth */
 }
 
 /* 2. Responsive adjustments for mobile */
@@ -712,6 +714,13 @@ h4 {
 
     #quantity {
         width: 60px; /* Slightly larger input field for mobile */
+        flex: 0 0 60px; /* Update the fixed width for mobile */
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .quantity-container {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -723,12 +732,19 @@ h4 {
 
     #quantity {
         width: 70px; /* Larger input field for better mobile experience */
+        flex: 0 0 70px; /* Update the fixed width for small screens */
     }
 
     .quantity-btn {
         padding: 8px 12px;
         font-size: 20px; /* Larger buttons for easier clicking */
     }
+}
+.quantity-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 
