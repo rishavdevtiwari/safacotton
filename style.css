@@ -92,6 +92,7 @@ p {
 
 .header {
     background: radial-gradient(#fff, #ffd6d6);
+    width:100%;
 }
 
 .header .row {
@@ -214,7 +215,7 @@ h4 {
 /* Footer Styles */
 
 .footer {
-    background-color: #96eed8;
+    background-color: radial-gradient(#008cff, #96eed8);
     padding: 20px 0;
     font-family: Arial, sans-serif;
     color: #333;
@@ -306,7 +307,7 @@ h4 {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: #333;
+        background-color: radial-gradient(#777,#333);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         z-index: 999;
         overflow: hidden;
