@@ -4,26 +4,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SafaCotton | SafaCotton Website</title>
-        <link rel="icon" href="https://safacotton.com.np/icon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="https://safacotton.com.np/icon.ico" type="image/x-icon">
+        <link rel="icon" href="{{ window.env.LOGO_URL }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ window.env.LOGO_URL }}" type="image/x-icon">
         <!-- For Windows devices -->
-        <meta name="msapplication-TileImage" content="https://safacotton.com.np/icon.ico">
+        <meta name="msapplication-TileImage" content="{{ window.env.LOGO_URL }}">
         <meta name="msapplication-TileColor" content="#ffffff">
 
-        <!-- For Safari on Mac OS X -->
-        <link rel="icon" type="image/x-icon" href="https://safacotton.com.np/icon.ico">        
-        <link rel="stylesheet" href="https://safacotton.com.np/style.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">    
+       <!-- For Safari on Mac OS X -->
+       <link rel="icon" type="image/x-icon" href="{{ window.env.LOGO_URL }}">
+       <link rel="stylesheet" href="https://safacotton.com.np/style.css">
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@373&display=swap" rel="stylesheet">
+       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+       <script src="env.js"></script>
     </head>
     <body>
         <div class="header">
             <div class="container">
                 <div class="navbar">
                     <div class="logo">
-                        <img src="https://safacotton.com.np/images/logo1.png" width="125px">
+                        <img src="{{ window.env.LOGO_URL }}" width="125px">
                     </div>
                     <nav>
                         <ul id="MenuItems">
@@ -33,7 +34,7 @@
                       </nav>
         
                         <a href="https://safacotton.com.np/cart.html"><img src="https://safacotton.com.np/images/cart.png" width="30px" height="30px"></a>
-                        <img src="https://safacotton.com.np/images/menu.png" class="menu-icon" onclick="menutoggle()">
+                        <img src="{{ window.env.MENU_ICON_URL }}" class="menu-icon" onclick="menutoggle()">
                 </div>
             <div class="row">
                 <div class="col-2">
@@ -42,7 +43,7 @@
                     <a href="products.html" class="btn">Explore Now &#10140;</a>
                 </div>
             <div class="col-2">
-                    <img src="https://safacotton.com.np/images/safacotton.png">
+                    <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             </div>
             </div>
             </div>
@@ -52,13 +53,13 @@
     <div class="small-container">
         <div class="row">
             <div class="col-3">
-                <img src="https://safacotton.com.np/images/safacottonbanner.png">
+                <img src="{{ window.env.SAFACOTTON_BANNER_URL }}">
             </div>
             <div class="col-3">
-                <img src="https://safacotton.com.np/images/banner.png">
+                <img src="{{ window.env.BANNER_URL }}">
             </div>
             <div class="col-3">
-                <img src="https://safacotton.com.np/images/sample.png">
+                <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             </div>
         </div>
     </div>
@@ -68,7 +69,7 @@
     <h2 class="title">Featured Products</h2>
     <div class="row">
         <div class="col-4" onclick="showProductDetails('product1')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>Cotton Rolls 15/25 Gm (Gross)</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -80,7 +81,7 @@
             <p id="product-price-1">Rs.155.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product2')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>Cotton Rolls 25/50 Gm (Gross)</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -92,7 +93,7 @@
             <p id="product-price-2">Rs.200.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product3')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>Cotton Rolls 60/100 Gm (Gross)</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -106,7 +107,7 @@
         </div>
         <div class="row">
         <div class="col-4" onclick="showProductDetails('product4')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>Cotton Rolls 150/200 Gm (Gross) </h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -118,7 +119,7 @@
             <p id="product-price-4">Rs.120.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product5')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>Cotton Rolls 300/400 Gm (Gross)</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -130,7 +131,7 @@
             <p id="product-price-5">Rs.155.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product6')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>Cotton Rolls 400/500 Gm (Gross)</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -144,7 +145,7 @@
         </div>
         <div class="row">
         <div class="col-4" onclick="showProductDetails('product7')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>ZigZag 50 Gm</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -156,7 +157,7 @@
             <p id="product-price-7">Rs.40.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product8')">
-            <img src="https://safacotton.com.np/images/sample.png">
+            <img src="{{ window.env.SAMPLE_IMAGE_URL }}">
             <h4>ZigZag 100 Gm</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -184,7 +185,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <img src="https://safacotton.com.np/images/img1.png">
+                        <img src="{{ window.env.IMG1_URL }}">
                         <h3>Prabesh Paudel</h3>
                 </div>
             <div class="col-5">
@@ -199,7 +200,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
                         </div>
-                        <img src="https://safacotton.com.np/images/user-2.png">
+                        <img src="{{ window.env.USER_2_URL }}">
                         <h3>Guma Paudel</h3>
                 </div>
             <div class="col-5">
@@ -213,7 +214,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-o"></i>
                         </div>
-                        <img src="https://safacotton.com.np/images/user-3.png">
+                        <img src="{{ window.env.USER_3_URL }}">
                         <h3>Prameela Paudel</h3>
                 </div>
         </div>
@@ -229,11 +230,11 @@
                 <p>Contact Us at +9779843673247 | +9779846511551</p>
             </div>
             <div class="footer-col-2">
-                <img src="https://safacotton.com.np/images/logo1.png" width="125px">
+                <img src="{{ window.env.LOGO_URL }}" width="125px">
                 <p>Your trusted source for medical supplies in Nepal.</p>
             </div>
             <br>
-            <p class="copyright">&copy; 2024 safacotton. All rights reserved.</p>
+            <p class="copyright">&copy; 2004 safacotton. All rights reserved.</p>
             </div>
         </div>
     </div>
