@@ -73,11 +73,11 @@
 <script>
     // Retrieve product details from localStorage
     const productId = localStorage.getItem('productId');
-    const productPrice = localStorage.getItem('productPrice');
+    const productPrice = Number(localStorage.getItem('productPrice'));
     const products = {
         product1: { name: 'Cotton Rolls 15/25 Gm (Gross)', price: 'Rs.155.00', img: 'https://safacotton.com.np/images/15.25.png', smallImg1: 'https://safacotton.com.np/images/15.25.1.png', smallImg2: 'https://safacotton.com.np/images/15.25.2.png', },
         product2: { name: 'Cotton Rolls 25/50 Gm (Gross)', price: 'Rs.200.00', img: 'https://safacotton.com.np/images/25.50.png', smallImg1: 'https://safacotton.com.np/images/25.50.1.png', smallImg2: 'https://safacotton.com.np/images/25.50.2.png' },
-        product3: { name: 'Cotton Rolls 60/100 Gm (Gross)', price: 'Rs.340.00', img: 'https://safacotton.com.np/images/60.100.0.png', smallImg1: 'https://safacotton.com.np/images/60.100.1.png', smallImg2: 'https://safacotton.com.np/images/60.100.2.png', smallImg3: 'https://safacotton.com.np/images/60.100.3.png', smallImg4: 'https://safacotton/com/np/images/60.100.png' },
+        product3: { name: 'Cotton Rolls 60/100 Gm (Gross)', price: 'Rs.340.00', img: 'https://safacotton.com.np/images/60.100.0.png', smallImg1: 'https://safacotton.com.np/images/60.100.1.png', smallImg2: 'https://safacotton.com.np/images/60.100.2.png', smallImg3: 'https://safacotton.com.np/images/60.100.3.png', smallImg4: 'https://safacotton.com/np/images/60.100.png' },
         product4: { name: 'Cotton Rolls 150/200 Gm (Gross)', price: 'Rs.120.00', img: 'https://safacotton.com.np/images/sample.png', smallImg1: 'https://safacotton.com.np/images/sample.png', smallImg2: 'https://safacotton.com.np/images/banner0.png', smallImg3: 'https://safacotton.com.np/images/sample.png', smallImg4: 'https://safacotton.com.np/images/safacotton.png' },
         product5: { name: 'Cotton Rolls 300/400 Gm (Gross)', price: 'Rs.155.00', img: 'https://safacotton.com.np/images/300_400.png', smallImg1: 'https://safacotton.com.np/images/300.400.1.png' },
         product6: { name: 'Cotton Rolls 400/500 Gm (Gross)', price: 'Rs.210.00', img: 'https://safacotton.com.np/images/sample.png', smallImg1: 'https://safacotton.com.np/images/sample.png', smallImg2: 'https://safacotton.com.np/images/banner0.png', smallImg3: 'https://safacotton.com.np/images/sample.png', smallImg4: 'https://safacotton.com.np/images/safacotton.png' },
@@ -131,14 +131,6 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
                 <i class="fa fa-star-half-o"></i>
             </div>
             <p id="product-price-1">Rs.155.00</p>
-            <div class="small-img-row">
-                <div class="col-3">
-                    <img src="https://safacotton.com.np/images/15.25.1.png">
-                </div>
-                <div class="col-3">
-                    <img src="https://safacotton.com.np/images/15.25.2.png">
-                </div>
-            </div>
         </div>
         <div class="col-4" onclick="showProductDetails('product2')">
             <img src="https://safacotton.com.np/images/25.50.png">
@@ -268,22 +260,45 @@ function showProductDetails(productId) {
 </script>
 
 <script>
-// Get the main product image and small images
-var ProductImg = document.getElementById("product-img");
-var SmallImg = document.getElementsByClassName("small-img");
+// Get the main product image and small image container
+const ProductImg = document.getElementById("product-img");
+const smallImgContainer = document.querySelector(".small-img-row");
 
-// Loop through all small images and add onclick event
-for (let i = 0; i < SmallImg.length; i++) {
-  SmallImg[i].onclick = function() {
-    // Update the main product image src
-    ProductImg.src = SmallImg[i].src;
-  }
+// Function to load small images dynamically
+function loadSmallImages(product) {
+    smallImgContainer.innerHTML = ""; // Clear existing images
+
+    // Iterate through small images and add them
+    for (let i = 1; i <= 4; i++) {
+        if (product[`smallImg${i}`]) {
+            let imgCol = document.createElement("div");
+            imgCol.classList.add("small-img-col");
+            let img = document.createElement("img");
+            img.src = product[`smallImg${i}`];
+            img.classList.add("small-img");
+            img.style.width = "100%";
+
+            // Click event to update the main product image
+            img.onclick = function () {
+                ProductImg.src = this.src;
+            };
+
+            imgCol.appendChild(img);
+            smallImgContainer.appendChild(imgCol);
+        }
+    }
 }
 </script>
 
 <script>
 // Get the Add to Cart button
-const addToCartButton = document.getElementById('add-to-cart');
+document.addEventListener('DOMContentLoaded', function () {
+    const addToCartButton = document.getElementById('add-to-cart');
+    if (addToCartButton) {
+        addToCartButton.addEventListener('click', addToCart);
+    }
+});
+
 
 // Get the product details
 //product id ra product price mathi lisakeko cha local storage bata
