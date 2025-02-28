@@ -172,7 +172,8 @@ h4 {
 /* Testimonial Styles */
 .testimonial {
     text-align: center;
-    padding: 50px 20px;
+    padding: 50px 20px; /* Adjusted padding for better spacing */
+    margin-top: 50px; /* Reduced gap from the above section (about 3 fingers) */
 }
 
 .testimonial .row {
@@ -188,65 +189,48 @@ h4 {
     background: #f8f8f8;
     padding: 20px;
     border-radius: 10px;
-    box-sizing: 20%;
-    border-radius: 10%;
-    box-shadow: 0 0 20px 0px rgba(18, 18, 18, 0.548);
+    box-shadow: 0 0 20px rgba(18, 18, 18, 0.3);
     cursor: pointer;
-    transition: transform 0.5s;
+    transition: transform 0.3s;
     text-align: center;
 }
 
-.testimonial img {
-    width: 80px; /* Adjusted for better mobile view */
+/* Fix stretched images */
+.testimonial .col-5 img {
+    width: 80px;
     height: 80px;
+    object-fit: cover; /* Ensures images don’t stretch */
     border-radius: 50%;
     margin-top: 10px;
 }
 
-/* For smaller screens */
+.testimonial .col-5:hover {
+    transform: translateY(-10px);
+}
+
+/* Reduce excessive spacing */
 @media (max-width: 768px) {
+    .testimonial {
+        margin-top: 30px; /* Reduce gap further on mobile */
+    }
     .testimonial .row {
         flex-direction: column;
         align-items: center;
     }
-
     .testimonial .col-5 {
-        max-width: 100%;
+        max-width: 90%; /* Ensures proper fitting on smaller screens */
     }
 }
 
-/* .testimonial {
-    padding-top: 40%;
-}
-
-.testimonial .col-5 {
-    text-align: center;
-    padding: 40px 20px;
-    box-sizing: 20%;
-    border-radius: 10%;
-    box-shadow: 0 0 20px 0px rgba(18, 18, 18, 0.548);
-    cursor: pointer;
-    transition: transform 0.5s;
-} */
-
-.testimonial .col-5 img {
-    width: 50px;
-    margin-top: 20px;
-    border-radius: 50%;
-}
-
-.testimonial .col-5:hover {
-    transform: translateY(-15px);
-}
-
+/* Adjust quote icon */
 .fa.fa-quote-left {
-    font-size: 34px;
+    font-size: 28px;
     color: #ff523b;
 }
 
 .col-5 p {
-    font-size: 12px;
-    margin: 12px 0;
+    font-size: 14px;
+    margin: 10px 0;
     color: #777;
 }
 
@@ -255,6 +239,7 @@ h4 {
     color: #555;
     font-size: 16px;
 }
+
 
 /* Footer Styles */
 
