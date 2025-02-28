@@ -172,7 +172,7 @@ h4 {
 /* Testimonial Styles */
 
 .testimonial {
-    padding-top: 100px;
+    padding-top: 40%;
 }
 
 .testimonial .col-5 {
@@ -192,7 +192,7 @@ h4 {
 }
 
 .testimonial .col-5:hover {
-    transform: translateY(-10px);
+    transform: translateY(-15px);
 }
 
 .fa.fa-quote-left {
