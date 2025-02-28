@@ -288,6 +288,19 @@ function loadSmallImages(product) {
         }
     }
 }
+// Get product from the products list
+const selectedProduct = products[productId];
+
+if (selectedProduct) {
+    document.getElementById('product-name').innerText = selectedProduct.name;
+    document.getElementById('product-price').innerText = `Rs.${selectedProduct.price}`;
+    ProductImg.src = selectedProduct.img;
+
+    // Load small images
+    loadSmallImages(selectedProduct);
+} else {
+    console.error("Product not found!");
+}
 </script>
 
 <script>
