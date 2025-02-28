@@ -122,6 +122,20 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
     <div class="row">
         <div class="col-4" onclick="showProductDetails('product1')">
             <img src="https://safacotton.com.np/images/15.25.png">
+            <div class="small-img-row">
+                <div class="col-4">
+                    <img src="https://safacotton.com.np/images/15.25.png">
+                </div>
+                <div class="col-4">
+                    <img src="https://safacotton.com.np/images/15.25.png">
+                </div>
+                <div class="col-4">
+                    <img src="https://safacotton.com.np/images/15.25.png">
+                </div>
+                <div class="col-4">
+                    <img src="https://safacotton.com.np/images/15.25.png">
+                </div>
+            </div>
             <h4>Cotton Rolls 15/25 Gm (Gross)</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
@@ -260,27 +274,17 @@ function showProductDetails(productId) {
 </script>
 
 <script>
-    // Get the main product image and small images
-    var ProductImg = document.getElementById("product-img");
-    var SmallImg = document.getElementsByClassName("small-img");
+// Get the main product image and small images
+var ProductImg = document.getElementById("product-img");
+var SmallImg = document.getElementsByClassName("small-img");
 
-    // Debugging: Check if elements are selected correctly
-    console.log("Main Product Image:", ProductImg);
-    console.log("Small Images:", SmallImg);
-
-    // Loop through all small images and add onclick event
-    for (let i = 0; i < SmallImg.length; i++) {
-        SmallImg[i].onclick = function() {
-            // Debugging: Confirm onclick event is firing
-            console.log("Small Image Clicked:", SmallImg[i].src);
-
-            // Update the main product image src
-            ProductImg.src = SmallImg[i].src;
-
-            // Debugging: Confirm the main image src is updated
-            console.log("Main Image Updated to:", ProductImg.src);
-        }
-    }
+// Loop through all small images and add onclick event
+for (let i = 0; i < SmallImg.length; i++) {
+  SmallImg[i].onclick = function() {
+    // Update the main product image src
+    ProductImg.src = SmallImg[i].src;
+  }
+}
 </script>
 
 <script>
