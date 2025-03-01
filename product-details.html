@@ -252,13 +252,18 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
 </div>
 
 <script>
-function showProductDetails(productId) {
-    // Store product details in localStorage
-    const productPrice = document.getElementById(`product-price-${productId.slice(-1)}`).innerText.replace('Rs.', '');
-    localStorage.setItem('productId', productId);
-    localStorage.setItem('productPrice', productPrice);
-    window.location.href = 'product-details.html';
-}
+    function showProductDetails(productId) {
+        // Extract numeric part of productId
+        const productNumber = productId.replace(/\D/g, ''); // Removes non-numeric characters
+        const productPrice = document.getElementById(`product-price-${productNumber}`).innerText.replace('Rs.', '').trim();
+    
+        // Store product details in localStorage
+        localStorage.setItem('productId', productId);
+        localStorage.setItem('productPrice', productPrice);
+    
+        // Redirect to product details page
+        window.location.href = 'product-details.html';
+    }    
 </script>
 <!--footer-->
 <div id="footer" class="footer">
