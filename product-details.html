@@ -409,5 +409,22 @@ function addToCart() {
 addToCartButton.addEventListener('click', addToCart);
   </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function () { 
+        let rawPrice = localStorage.getItem('productPrice'); 
+        
+        // Validate the retrieved price
+        if (!rawPrice || isNaN(parseFloat(rawPrice.replace(/,/g, '')))) { 
+            rawPrice = "0"; // Default to "0" if invalid 
+        } 
+        
+        const productPrice = parseFloat(rawPrice.replace(/,/g, '')) || 0; // Remove commas before parsing 
+        const quantity = 1; 
+        
+        document.getElementById('product-price').innerText = `Rs.${productPrice.toFixed(2)}`; 
+        document.getElementById('total-price').innerText = `Total Price: Rs.${(productPrice * quantity).toFixed(2)}`;
+    });
+    </script>
+
 </body>
 </html>
