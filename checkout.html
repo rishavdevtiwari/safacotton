@@ -139,9 +139,9 @@
             z-index: 1;
         }
         
-        .dropdown:hover .dropdown-content {
+        <!-- .dropdown:hover .dropdown-content {
             display: block;
-        }
+        } -->
         
         .dropdown-content img {
             width: 300px;
@@ -330,16 +330,40 @@
         }
     }
 
-    // Function to select payment method
-    function selectPaymentMethod(element) {
-        const methods = document.querySelectorAll('.payment-method');
-        methods.forEach(method => method.classList.remove('selected'));
-        element.classList.add('selected');
-        const paymentMethod = element.id;
+// Function to select payment method & toggle dropdown on mobile
+function selectPaymentMethod(element) {
+    // Remove the "selected" class from all payment methods
+    const methods = document.querySelectorAll('.payment-method');
+    methods.forEach(method => method.classList.remove('selected'));
 
-        // Update the hidden input field with the selected payment method
-        document.getElementById('payment-method').value = paymentMethod;
+    // Add "selected" class to the clicked element
+    element.classList.add('selected');
+
+    // Update hidden input field with the selected payment method
+    document.getElementById('payment-method').value = element.id;
+
+    // Close any open dropdowns
+    document.querySelectorAll('.dropdown-content').forEach(dropdown => {
+        dropdown.style.display = "none";
+    });
+
+    // Find the associated dropdown content
+    const dropdownContent = element.nextElementSibling;
+    if (dropdownContent && dropdownContent.classList.contains('dropdown-content')) {
+        // Toggle dropdown visibility
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
     }
+}
+
+// Close dropdowns if user clicks outside
+document.addEventListener("click", function (event) {
+    if (!event.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown-content").forEach(dropdown => {
+            dropdown.style.display = "none";
+        });
+    }
+});
+
 
     // Toggle order details view
     function toggleOrderDetails() {
