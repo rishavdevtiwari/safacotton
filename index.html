@@ -278,27 +278,15 @@
 </script>
 <script>
     function showProductDetails(productId) {
-        // Extract numeric part from productId
+        // Extract numeric part of productId
         const productNumber = productId.replace(/\D/g, ''); // Removes non-numeric characters
-        
-        // Ensure product price is correctly fetched
-        const priceElement = document.getElementById(`product-price-${productNumber}`);
-        if (!priceElement) {
-            console.error(`Error: Price element for ${productId} not found`);
-            return;
-        }
+        const productPrice = document.getElementById(`product-price-${productNumber}`).innerText.replace('Rs.', '').trim();
     
-        const productPrice = priceElement.innerText.replace(/[^0-9.]/g, '').replace(/,/g, '').trim(); 
-        // Extracts price
-    
-        // Store product details
+        // Store product details in localStorage
         localStorage.setItem('productId', productId);
         localStorage.setItem('productPrice', productPrice);
     
-        // Debugging log
-        console.log(`Stored: ID=${productId}, Price=${productPrice}`);
-    
-        // Redirect
+        // Redirect to product details page
         window.location.href = 'product-details.html';
     }    
 </script>

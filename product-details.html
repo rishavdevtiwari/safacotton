@@ -84,7 +84,7 @@
         product7: { name: 'ZigZag 50 Gm', price: '40.00', img: 'https://safacotton.com.np/images/sample.png' },
         product8: { name: 'ZigZag 100 Gm', price: '75.00', img: 'https://safacotton.com.np/images/zigzag100.png' },
         product9: { name: 'Pulse | Oximeter', price: '500.00', img: 'https://safacotton.com.np/images/pulse.oximeter.png', smallImg1: 'https://safacotton.com.np/images/pulse_oximeter.1.png', smallImg2: 'https://safacotton.com.np/images/pulse_oximeter.2.png', smallImg3: 'https://safacotton.com.np/images/pulse_oximeter.3.png' },
-        product10: { name: 'Oxygen Concentrator', price: '70,000.00', img: 'https://safacotton.com.np/images/oxygen_conc.png', smallImg1: 'https://safacotton.com.np/images/oxygen_conc.1.png', smallImg2: 'https://safacotton.com.np/images/oxygen_conc.2.png', smallImg3: 'https://safacotton.com.np/images/oxygen_conc.3.png' }
+        product10: { name: 'Oxygen Concentrator', price: '70000.00', img: 'https://safacotton.com.np/images/oxygen_conc.png', smallImg1: 'https://safacotton.com.np/images/oxygen_conc.1.png', smallImg2: 'https://safacotton.com.np/images/oxygen_conc.2.png', smallImg3: 'https://safacotton.com.np/images/oxygen_conc.3.png' }
     };
 
 // Display product details
@@ -253,30 +253,17 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
 
 <script>
     function showProductDetails(productId) {
-        // Extract numeric part from productId
+        // Extract numeric part of productId
         const productNumber = productId.replace(/\D/g, ''); // Removes non-numeric characters
-        
-        // Ensure product price is correctly fetched
-        const priceElement = document.getElementById(`product-price-${productNumber}`);
-        if (!priceElement) {
-            console.error(`Error: Price element for ${productId} not found`);
-            return;
-        }
+        const productPrice = document.getElementById(`product-price-${productNumber}`).innerText.replace('Rs.', '').trim();
     
-        const productPrice = priceElement.innerText.replace(/[^0-9.]/g, '').replace(/,/g, '').trim(); 
-        // Extracts price
-    
-        // Store product details
+        // Store product details in localStorage
         localStorage.setItem('productId', productId);
         localStorage.setItem('productPrice', productPrice);
     
-        // Debugging log
-        console.log(`Stored: ID=${productId}, Price=${productPrice}`);
-    
-        // Redirect
+        // Redirect to product details page
         window.location.href = 'product-details.html';
-    }
-    
+    }    
 </script>
 <!--footer-->
 <div id="footer" class="footer">
@@ -408,23 +395,6 @@ function addToCart() {
 // Add an event listener to the Add to Cart button
 addToCartButton.addEventListener('click', addToCart);
   </script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () { 
-        let rawPrice = localStorage.getItem('productPrice'); 
-        
-        // Validate the retrieved price
-        if (!rawPrice || isNaN(parseFloat(rawPrice.replace(/,/g, '')))) { 
-            rawPrice = "0"; // Default to "0" if invalid 
-        } 
-        
-        const productPrice = parseFloat(rawPrice.replace(/,/g, '')) || 0; // Remove commas before parsing 
-        const quantity = 1; 
-        
-        document.getElementById('product-price').innerText = `Rs.${productPrice.toFixed(2)}`; 
-        document.getElementById('total-price').innerText = `Total Price: Rs.${(productPrice * quantity).toFixed(2)}`;
-    });
-    </script>
 
 </body>
 </html>
