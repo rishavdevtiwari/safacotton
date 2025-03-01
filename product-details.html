@@ -78,7 +78,7 @@
         product1: { name: 'Cotton Rolls 15/25 Gm (Gross)', price: '155.00', img: 'https://safacotton.com.np/images/15.25.png', smallImg1: 'https://safacotton.com.np/images/15.25.1.png', smallImg2: 'https://safacotton.com.np/images/15.25.2.png', smallImg3: 'https://safacotton.com.np/images/15.25.png' },
         product2: { name: 'Cotton Rolls 25/50 Gm (Gross)', price: '200.00', img: 'https://safacotton.com.np/images/25.50.png', smallImg1: 'https://safacotton.com.np/images/25.50.1.png', smallImg2: 'https://safacotton.com.np/images/25.50.2.png', smallImg3: 'https://safacotton.com.np/images/25.50.png' },
         product3: { name: 'Cotton Rolls 60/100 Gm (Gross)', price: '340.00', img: 'https://safacotton.com.np/images/60_100.png', smallImg1: 'https://safacotton.com.np/images/60.100.1.png', smallImg2: 'https://safacotton.com.np/images/60.100.2.png', smallImg3: 'https://safacotton.com.np/images/60.100.3.png' },
-        product4: { name: 'Cotton Rolls 150/200 Gm (Gross)', price: '120.00' },
+        product4: { name: 'Cotton Rolls 150/200 Gm (Gross)', price: '120.00', img: 'https://safacotton.com.np/images/sample.png' },
         product5: { name: 'Cotton Rolls 300/400 Gm (Gross)', price: '155.00', img: 'https://safacotton.com.np/images/300_400.png', smallImg1: 'https://safacotton.com.np/images/300.400.1.new.png', smallImg2: 'https://safacotton.com.np/images/300by400.png' },
         product6: { name: 'Cotton Rolls 400/500 Gm (Gross)', price: '210.00', img: 'https://safacotton.com.np/images/400by500.png' },
         product7: { name: 'ZigZag 50 Gm', price: '40.00', img: 'https://safacotton.com.np/images/sample.png' },
@@ -90,7 +90,7 @@
 // Display product details
 const product = products[productId];
 document.getElementById('product-name').innerText = product.name;
-document.getElementById('product-price').innerText = `Rs.${productPrice}`;
+document.getElementById('product-price').innerText = `Rs.${Number(product.price).toFixed(2)}`;
 document.getElementById('product-img').src = product.img;
 
 // Update total price based on quantity
@@ -98,8 +98,8 @@ const quantityInput = document.getElementById('quantity');
 const totalPriceElement = document.getElementById('total-price');
 
 const updateTotalPrice = () => {
-    const quantity = parseInt(quantityInput.value);
-    const totalPrice = productPrice * quantity;
+    const quantity = parseInt(quantityInput.value) || 1;
+    const totalPrice = Number(product.price) * quantity;
     totalPriceElement.innerText = `Total Price: Rs.${totalPrice.toFixed(2)}`;
 };
 
@@ -112,7 +112,7 @@ quantityInput.addEventListener('input', updateTotalPrice);
 // Add to cart functionality
 document.getElementById('add-to-cart').addEventListener('click', () => {
     const quantity = quantityInput.value;
-    const totalPrice = productPrice * quantity;
+    const totalPrice = Number(product.price) * quantity;
     alert(`Added ${quantity} of ${product.name} to cart. Total Price: Rs.${totalPrice.toFixed(2)}`);
     // Here you can implement the logic to store the cart details
 });
