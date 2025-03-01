@@ -253,17 +253,29 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
 
 <script>
     function showProductDetails(productId) {
-        // Extract numeric part of productId
+        // Extract numeric part from productId
         const productNumber = productId.replace(/\D/g, ''); // Removes non-numeric characters
-        const productPrice = document.getElementById(`product-price-${productNumber}`).innerText.replace('Rs.', '').trim();
+        
+        // Ensure product price is correctly fetched
+        const priceElement = document.getElementById(`product-price-${productNumber}`);
+        if (!priceElement) {
+            console.error(`Error: Price element for ${productId} not found`);
+            return;
+        }
     
-        // Store product details in localStorage
+        const productPrice = priceElement.innerText.replace(/[^\d.]/g, '').trim(); // Extracts price
+    
+        // Store product details
         localStorage.setItem('productId', productId);
         localStorage.setItem('productPrice', productPrice);
     
-        // Redirect to product details page
+        // Debugging log
+        console.log(`Stored: ID=${productId}, Price=${productPrice}`);
+    
+        // Redirect
         window.location.href = 'product-details.html';
-    }    
+    }
+    
 </script>
 <!--footer-->
 <div id="footer" class="footer">
