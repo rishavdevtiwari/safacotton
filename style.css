@@ -782,3 +782,8 @@ h4 {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.row:last-child {
+    display: flex;
+    justify-content: center;
+}
