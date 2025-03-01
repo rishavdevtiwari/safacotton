@@ -210,7 +210,8 @@
             return;
         }
     
-        const productPrice = priceElement.innerText.replace(/[^\d.]/g, '').trim(); // Extracts price
+        const productPrice = priceElement.innerText.replace(/[^0-9.]/g, '').replace(/,/g, '').trim(); 
+        // Extracts price
     
         // Store product details
         localStorage.setItem('productId', productId);
