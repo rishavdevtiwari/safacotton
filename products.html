@@ -76,7 +76,6 @@
             <p id="product-price-3">Rs.340.00</p>
         </div>
         </div>
-        <div class="container fade-in">
         <div class="row">
         <div class="col-4" onclick="showProductDetails('product4')">
             <img src="https://safacotton.com.np/images/sample.png">
@@ -115,8 +114,6 @@
             <p id="product-price-6">Rs.215.00</p>
         </div>
         </div>
-        </div>
-        <div class="container fade-in">
         <div class="row">
         <div class="col-4" onclick="showProductDetails('product7')">
             <img src="https://safacotton.com.np/images/sample.png">
@@ -155,8 +152,6 @@
             <p id="product-price-9">Rs.100.00</p>
         </div>
     </div>
-    </div>
-    <div class="container fade-in">
     <div class="row">
         <div class="col-4" onclick="showProductDetails('product10')">
             <img src="https://safacotton.com.np/images/oxygen_conc.png">
@@ -172,9 +167,7 @@
         </div>
     </div>
     </div>
-</div>
 <!--footer-->
-<div class="container fade-in">
 <div id="footer" class="footer">
     <div class="container">
         <div class="row">
@@ -191,8 +184,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
 <!---js for menu toggling-->
 <script>
     var MenuItems = document.getElementById("MenuItems");
@@ -219,25 +210,7 @@
         // Redirect to product details page
         window.location.href = 'product-details.html';
     }    
-</script>
+</script> 
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-in");
-    
-        function handleScroll() {
-            fadeElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.9) {
-                    el.classList.add("visible");
-                }
-            });
-        }
-    
-        window.addEventListener("scroll", handleScroll);
-        handleScroll(); // Run on load to catch elements already in view
-    });
-    </script>    
-    
 </body>
 </html>

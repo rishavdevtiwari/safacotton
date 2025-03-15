@@ -117,28 +117,8 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
     // Here you can implement the logic to store the cart details
 });
 </script>
-
-<div class="container fade-in">
 <div class="related-products-section">
-        <h2 class="title">Related Products</h2>console.log('Product details retrieved from localStorage');
-console.log('Product ID:', productId);
-console.log('Product Price:', productPrice);
-
-console.log('Product details:');
-console.log('Name:', product.name);
-console.log('Price:', product.price);
-console.log('Image:', product.img);
-
-console.log('Total price updated');
-console.log('Quantity:', quantity);
-console.log('Total Price:', totalPrice);
-
-console.log('Product added to cart');
-console.log('Product ID:', productId);
-console.log('Product Name:', productName);
-console.log('Product Price:', product.price);
-console.log('Product Image:', productImage);
-console.log('Quantity:', quantity);
+        <h2 class="title">Related Products</h2>
     <div class="row">
         <div class="col-4" onclick="showProductDetails('product1')">
             <img src="https://safacotton.com.np/images/15.25.png">
@@ -267,7 +247,6 @@ console.log('Quantity:', quantity);
             <p id="product-price-10">Rs.40000.00</p>
         </div>
     </div>
-</div>
 </div>
 
 <script>
@@ -414,25 +393,7 @@ function addToCart() {
 
 // Add an event listener to the Add to Cart button
 addToCartButton.addEventListener('click', addToCart);
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const fadeElements = document.querySelectorAll(".fade-in");
-    
-        function handleScroll() {
-            fadeElements.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                if (rect.top < window.innerHeight * 0.9) {
-                    el.classList.add("visible");
-                }
-            });
-        }
-    
-        window.addEventListener("scroll", handleScroll);
-        handleScroll(); // Run on load to catch elements already in view
-    });
-    </script>    
+  </script>  
 
 </body>
 </html>
