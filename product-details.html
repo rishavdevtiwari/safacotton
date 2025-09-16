@@ -75,12 +75,12 @@
     const productId = localStorage.getItem('productId');
     const productPrice = Number(localStorage.getItem('productPrice'));
     const products = {
-        product1: { name: 'Cotton Rolls 15/25 Gm (Gross)', price: '155.00', img: 'https://safacotton.com.np/images/15.25.png', smallImg1: 'https://safacotton.com.np/images/15.25.1.png', smallImg2: 'https://safacotton.com.np/images/15.25.2.png', smallImg3: 'https://safacotton.com.np/images/15.25.png' },
-        product2: { name: 'Cotton Rolls 25/50 Gm (Gross)', price: '200.00', img: 'https://safacotton.com.np/images/25.50.png', smallImg1: 'https://safacotton.com.np/images/25.50.1.png', smallImg2: 'https://safacotton.com.np/images/25.50.2.png', smallImg3: 'https://safacotton.com.np/images/25.50.png' },
-        product3: { name: 'Cotton Rolls 60/100 Gm (Gross)', price: '340.00', img: 'https://safacotton.com.np/images/60_100.png', smallImg1: 'https://safacotton.com.np/images/60.100.1.png', smallImg2: 'https://safacotton.com.np/images/60.100.2.png', smallImg3: 'https://safacotton.com.np/images/60.100.3.png' },
+        product1: { name: 'Cotton Rolls 15/25 Gm (Gross)', price: '165.00', img: 'https://safacotton.com.np/images/15.25.png', smallImg1: 'https://safacotton.com.np/images/15.25.1.png', smallImg2: 'https://safacotton.com.np/images/15.25.2.png', smallImg3: 'https://safacotton.com.np/images/15.25.png' },
+        product2: { name: 'Cotton Rolls 25/50 Gm (Gross)', price: '210.00', img: 'https://safacotton.com.np/images/25.50.png', smallImg1: 'https://safacotton.com.np/images/25.50.1.png', smallImg2: 'https://safacotton.com.np/images/25.50.2.png', smallImg3: 'https://safacotton.com.np/images/25.50.png' },
+        product3: { name: 'Cotton Rolls 60/100 Gm (Gross)', price: '400.00', img: 'https://safacotton.com.np/images/60_100.png', smallImg1: 'https://safacotton.com.np/images/60.100.1.png', smallImg2: 'https://safacotton.com.np/images/60.100.2.png', smallImg3: 'https://safacotton.com.np/images/60.100.3.png' },
         product4: { name: 'Cotton Rolls 150/200 Gm (Gross)', price: '120.00', img: 'https://safacotton.com.np/images/60.100.2.png' },
-        product5: { name: 'Cotton Rolls 300/400 Gm (Gross)', price: '150.00', img: 'https://safacotton.com.np/images/300_400.png', smallImg1: 'https://safacotton.com.np/images/300.400.1.new.png', smallImg2: 'https://safacotton.com.np/images/300by400.png' },
-        product6: { name: 'Cotton Rolls 400/500 Gm (Gross)', price: '215.00', img: 'https://safacotton.com.np/images/400by500.png' },
+        product5: { name: 'Cotton Rolls 300/400 Gm (Gross)', price: '160.00', img: 'https://safacotton.com.np/images/300_400.png', smallImg1: 'https://safacotton.com.np/images/300.400.1.new.png', smallImg2: 'https://safacotton.com.np/images/300by400.png' },
+        product6: { name: 'Cotton Rolls 400/500 Gm (Gross)', price: '225.00', img: 'https://safacotton.com.np/images/400by500.png' },
         product7: { name: 'ZigZag 50 Gm', price: '40.00', img: 'https://safacotton.com.np/images/zigzag100.png' },
         product8: { name: 'ZigZag 100 Gm', price: '75.00', img: 'https://safacotton.com.np/images/zigzag100.png' },
         product9: { name: 'Pulse | Oximeter', price: '100.00', img: 'https://safacotton.com.np/images/pulse.oximeter.png', smallImg1: 'https://safacotton.com.np/images/pulse_oximeter.1.png', smallImg2: 'https://safacotton.com.np/images/pulse_oximeter.2.png', smallImg3: 'https://safacotton.com.np/images/pulse_oximeter.3.png' },
@@ -130,7 +130,7 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>
             </div>
-            <p id="product-price-1">Rs.155.00</p>
+            <p id="product-price-1">Rs.165.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product2')">
             <img src="https://safacotton.com.np/images/25.50.png">
@@ -142,7 +142,7 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>
             </div>
-            <p id="product-price-2">Rs.200.00</p>
+            <p id="product-price-2">Rs.210.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product3')">
             <img src="https://safacotton.com.np/images/60by100.png">
@@ -154,7 +154,7 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>
             </div>
-            <p id="product-price-3">Rs.340.00</p>
+            <p id="product-price-3">Rs.400.00</p>
         </div>
         </div>
         <div class="row">
@@ -180,7 +180,7 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>
             </div>
-            <p id="product-price-5">Rs.150.00</p>
+            <p id="product-price-5">Rs.160.00</p>
         </div>
         <div class="col-4" onclick="showProductDetails('product6')">
             <img src="https://safacotton.com.np/images/400by500.png">
@@ -192,7 +192,7 @@ document.getElementById('add-to-cart').addEventListener('click', () => {
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star-half-o"></i>
             </div>
-            <p id="product-price-6">Rs.215.00</p>
+            <p id="product-price-6">Rs.225.00</p>
         </div>
         </div>
         <div class="row">
